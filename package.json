@@ -20,5 +20,11 @@
   "main": "app.js",
   "devDependencies": {},
   "author": "Peter deHaan (http://nodeexamples.com/)",
+  "homepage": "http://npm-info.herokuapp.com/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pdehaan/npm-info.git"
+  },
+  "bugs": "https://github.com/pdehaan/npm-info/issues",
   "license": "WTFPL"
 }
