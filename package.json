@@ -12,9 +12,13 @@
     "npm-pkginfo": "0.0.3",
     "promise": "~3.2.0"
   },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.3.x"
+  },
   "description": "A simple JSON REST server for getting basic info about npm packages.",
   "main": "app.js",
   "devDependencies": {},
-  "author": "Peter deHaan <peter@deseloper.com> (http://nodeexamples.com/)",
+  "author": "Peter deHaan (http://nodeexamples.com/)",
   "license": "WTFPL"
 }
