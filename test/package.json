@@ -1,0 +1,14 @@
+{
+  "name": "npm-info-test",
+  "version": "0.0.0",
+  "description": "Client test for npm-info repo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peter deHaan <peter@deseloper.com> (http://nodeexamples.com/)",
+  "license": "WTFPL",
+  "dependencies": {
+    "request": "~2.27.0"
+  }
+}
