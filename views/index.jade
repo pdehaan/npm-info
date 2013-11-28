@@ -1,0 +1,115 @@
+extends layout
+
+block content
+  div.jumbotron
+    h1= title
+
+    p A simple JSON REST server for getting basic info about npm packages.
+
+  p By default, the service returns the following fields, as seen in the following example:
+  ul
+    li <code>name</code>:String
+    li <code>description</code>:String
+    li <code>author</code>:Object
+    li <code>repository</code>:Object
+    li <code>dist-tags</code>:Object (versions)
+
+  p For example, 
+    a(href="http://0.0.0.0/npm") http://0.0.0.0/npm
+    | &nbsp;gives us the following response:
+  pre.
+    {
+      "name": "npm",
+      "description": "A package manager for node",
+      "author": {
+        "name": "Isaac Z. Schlueter",
+        "email": "i@izs.me",
+        "url": "http://blog.izs.me"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/isaacs/npm"
+      },
+      "dist-tags": {
+        "1.1": "1.1.71",
+        "1.2": "1.2.32",
+        "x": "1.2.19",
+        "latest": "1.3.15",
+        "1.3": "1.3.15"
+      }
+    }
+
+  p If you want to filter which fields are returned, you can specify a second URL parameter with the desired field names.
+  p For example, 
+    a(href="http://0.0.0.0/npm/name,description,dist-tags%2Flatest") http://0.0.0.0/npm/name,description,dist-tags%2Flatest
+    | &nbsp;gives us the following response (where only the <code>name</code>, <code>description</code>, and <code>dist-tags/latest</code> properties are returned in the JSON):
+  pre.
+    {
+      "name": "npm",
+      "description": "A package manager for node",
+      "dist-tags": {
+        "latest": "1.3.15"
+      }
+    }
+
+  div.alert.alert-info
+    strong Note: 
+    | You have to encode the backslashes in the `:details` parameter as '%2F'. For example, instead of specifying <code>dist-tags/latest</code> you need to specify <code>dist-tags%2Flatest</code>.
+
+  h2 Sample usage:
+  table.table
+    thead
+      tr
+        th Route (/:name/:details?)
+        th Description
+        th Response
+    tbody
+      tr
+        td
+          strong: a(href='/request') /request
+        td Get info on the <b>request</b> module.
+        td
+          pre.
+            {
+              "name": "request",
+              "description": "Simplified HTTP request client.",
+              "author": {
+                "name": "Mikeal Rogers",
+                "email": "mikeal.rogers@gmail.com"
+              },
+              "repository": {
+                "type": "git",
+                "url": "http://github.com/mikeal/request.git"
+              },
+              "dist-tags": {
+                "latest": "2.27.0"
+              }
+            }
+
+      tr
+        td
+          strong: a(href='/promise/name,description') /promise/name,description
+        td Get the <code>name</code> and <code>description</code> fields for the <b>promise</b> module.
+        td
+          pre.
+            {
+              "name": "promise",
+              "description": "Bare bones Promises/A+ implementation"
+            }
+
+      tr
+        td
+          strong: a(href='/express/name,author%2Fname,repository%2Furl') /express/name,author%2Fname,repository%2Furl
+        td Get the <code>name</code>, <code>author/name</code>, and <code>repository/url</code> fields for the <b>express</b> module.
+        td
+          pre.
+            {
+              "name": "express",
+              "author": {
+                "name": "TJ Holowaychuk"
+              },
+              "repository": {
+                "url": "git://github.com/visionmedia/express"
+              }
+            }
+
