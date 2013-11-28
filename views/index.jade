@@ -15,7 +15,7 @@ block content
     li <code>dist-tags</code>:Object (versions)
 
   p For example, 
-    a(href="http://0.0.0.0/npm") http://0.0.0.0/npm
+    a(href="/npm") http://npm-init.herokuapp.com/npm
     | &nbsp;gives us the following response:
   pre.
     {
@@ -41,7 +41,7 @@ block content
 
   p If you want to filter which fields are returned, you can specify a second URL parameter with the desired field names.
   p For example, 
-    a(href="http://0.0.0.0/npm/name,description,dist-tags%2Flatest") http://0.0.0.0/npm/name,description,dist-tags%2Flatest
+    a(href="/npm/name,description,dist-tags%2Flatest") http://npm-init.herokuapp.com/npm/name,description,dist-tags%2Flatest
     | &nbsp;gives us the following response (where only the <code>name</code>, <code>description</code>, and <code>dist-tags/latest</code> properties are returned in the JSON):
   pre.
     {
